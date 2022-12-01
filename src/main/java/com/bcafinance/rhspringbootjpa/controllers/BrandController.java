@@ -74,4 +74,11 @@ public class BrandController {
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK, lsBrands, null, null);
     }
 
+    @PutMapping("/brands/updt")
+    public ResponseEntity<Object> updateBrandsByID(@RequestBody Brands brands)throws Exception{
+        brandService.updateBrandsById(brands);
+        return new ResponseHandler().
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,"",null,null);
+    }
+
 }

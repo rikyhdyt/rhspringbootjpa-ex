@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /*
@@ -51,4 +52,23 @@ public class BrandService {
         brandRepo.save(brands);
     }
 
+    @Transactional
+    public void updateBrandsById(Brands c) throws Exception {
+        Brands brands = brandRepo.findById(c.getId()).orElseThrow(() ->
+                new ResourceNotFoundException(ConstantMessage.WARNING_CAR_NOT_FOUND));
+
+        if(c.getBrName() != null
+                && !Objects.equals(brands.getBrName(),c.getBrName())
+                && !c.getBrName().equals(""))
+        {
+            brands.setBrName(c.getBrName());//BERARTI ADA PERUBAHAN DI SINI
+        }
+
+        if(c.getBrFrom() != null
+                && !Objects.equals(brands.getBrFrom(),c.getBrFrom())
+                && !c.getBrFrom().equals(""))
+        {
+            brands.setBrFrom(c.getBrFrom());//BERARTI ADA PERUBAHAN DI SINI
+        }
+    }
 }
