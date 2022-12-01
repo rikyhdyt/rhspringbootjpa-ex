@@ -31,8 +31,8 @@ public class Cars {
     @Column(name = "CarType",length = 50 ,nullable = false)
     private String carType;
 
-    @Column(name = "CarBrand",length = 15 ,nullable = false)
-    private String carBrand;
+    @ManyToOne
+    private Brands carBrand;
 
     @Column(name = "CarColor",length = 50 ,nullable = false)
     private String carColor;
