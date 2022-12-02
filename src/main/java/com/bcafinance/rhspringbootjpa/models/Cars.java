@@ -32,6 +32,7 @@ public class Cars {
     private String carType;
 
     @ManyToOne
+//    @JoinColumn(name = "CarBrand")
     private Brands carBrand;
 
     @Column(name = "CarColor",length = 50 ,nullable = false)
